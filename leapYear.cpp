@@ -9,6 +9,7 @@
 int main() {
     // This function determines whether it is a leap year or not
 
+    std::string yearStr;
     int year;
 
     std::cout << "" << std::endl;
@@ -16,28 +17,28 @@ int main() {
           " is a leap year or not." << std::endl;
     std::cout << "" << std::endl;
     std::cout << "Please input the year: ";
-    std::cin >> year;
+    std::cin >> yearStr;
     std::cout << "" << std::endl;
 
-    if (year % 4 == 0) {
-        if (year % 100 == 0) {
-            if (year % 400 == 0) {
-                if (!(year > 0) && !(year < 0)) {
-                    std::cout << "Invalid Input" << std::endl;
+    try {
+        year = std::stoi(yearStr);
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
+                    std::cout << "It is a leap year" << std::endl;
 
                 } else {
-                    std::cout << "It is a leap year" << std::endl;
+                    std::cout << "It is a common year" << std::endl;
                 }
 
             } else {
-                std::cout << "It is a common year" << std::endl;
+                std::cout << "It is a leap year" << std::endl;
             }
 
         } else {
-            std::cout << "It is a leap year" << std::endl;
+            std::cout << "It is a common year" << std::endl;
         }
-
-    } else {
-        std::cout << "It is a common year" << std::endl;
+    } catch (std::invalid_argument) {
+        std::cout << "Invalid Input" << std::endl;
     }
 }
